@@ -4,23 +4,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class AddProductsToCart_implicitWait {
+public class AddProductsToCart_ImplicitExplicitWait {
 
     public static void main(String[] args) throws InterruptedException {
 
         System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\89\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         /**
-         * Implementuję Implicit wait. Ustawiam defaultowy czas, przez jaki skrypt czeka przed wykonaniem poszczególnych stepów
+         * Implementuję Implicit Wait. Ustawiam defaultowy czas, przez jaki skrypt czeka przed wykonaniem poszczególnych stepów
          * (np. na załadowanie się wszystkich elementów na stronie) zanim sfailuje. Czas jest ustawiany globalnie.
          */
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        /**
+         * Definiuję też Explicit Wait do wykorzystania w przyszłości.
+         */
+        WebDriverWait explicitWait5sec = new WebDriverWait(driver, 5);
 
         String url = "https://rahulshettyacademy.com/seleniumPractise/#/";
         driver.get(url);
@@ -39,6 +45,12 @@ public class AddProductsToCart_implicitWait {
         promoCodeInput.sendKeys("rahulshettyacademy");
         WebElement applyButton = driver.findElement(By.xpath("//button[@class='promoBtn']"));
         applyButton.click();
+        /**
+         * Aplikowanie kodu promocyjnego trwa relatywnie długo. Dla tego konkretnego stepu warto zastosować Explicit Wait,
+         * gdzie ustawiam czas oczekiwania dla tego konkretnego stepu.
+         */
+        explicitWait5sec.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='promoInfo']")));
+
         String promoCodeApplicationConfirmation = driver.findElement(By.xpath("//span[@class='promoInfo']")).getText();
         Assert.assertEquals(promoCodeApplicationConfirmation, "Code applied ..!");
 
