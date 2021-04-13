@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
-public class ActionMouseHover {
+public class MouseHoverAction {
 
     public static void main(String[] args) {
 
@@ -29,6 +29,6 @@ public class ActionMouseHover {
          * Następnie wykorzystuję konkretną metodę, jako argument podaję WebElement na którym akcja ma być wykonana,
          * potem jak chain akcji jest gotowy muszę jeszcze dodać metody build() a następnie perform().
          */
-        action.moveToElement(signInDropdown).build().perform();
+        action.moveToElement(signInDropdown).contextClick().build().perform();
     }
 }
