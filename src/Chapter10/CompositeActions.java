@@ -9,7 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 /**
- * Zadanie: za pomocą akcji wpisać w searchbox słowo 'HELLO'.
+ * Zadanie: za pomocą akcji wpisać w searchbox słowo 'HELLO' tak jakby zrobił to user.
  */
 public class CompositeActions {
 
