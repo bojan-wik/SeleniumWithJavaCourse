@@ -16,7 +16,7 @@ public class AddProductsToCart_ImplicitExplicitWait {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\89\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\90\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         /**
          * Implementuję Implicit Wait. Ustawiam defaultowy czas, przez jaki skrypt czeka przed wykonaniem poszczególnych stepów
