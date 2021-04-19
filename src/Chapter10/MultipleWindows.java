@@ -55,6 +55,9 @@ public class MultipleWindows {
         driver.switchTo().window(childWindowID);
         System.out.printf("Child window title:\n%s\n", driver.getTitle()).println();
 
+        /*driver.switchTo().window(parentWindowID);
+        System.out.println(driver.getTitle());*/
+
         //driver.quit();
     }
 }
