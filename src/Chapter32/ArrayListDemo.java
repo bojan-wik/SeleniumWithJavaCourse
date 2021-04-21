@@ -45,6 +45,15 @@ public class ArrayListDemo {
         arrayList.add("ziomy");
         System.out.println(arrayList);
         arrayList.remove("rap");
+        arrayList.add("ziomy");
         System.out.println(arrayList);
+        /**
+         * inne metody
+         */
+        System.out.println(arrayList.get(0));
+        System.out.println(arrayList.indexOf("ziomy"));
+        System.out.println(arrayList.isEmpty());
+        System.out.println(arrayList.size());
+
     }
 }
