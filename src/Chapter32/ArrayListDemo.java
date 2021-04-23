@@ -54,6 +54,5 @@ public class ArrayListDemo {
         System.out.println(arrayList.indexOf("ziomy"));
         System.out.println(arrayList.isEmpty());
         System.out.println(arrayList.size());
-
     }
 }
