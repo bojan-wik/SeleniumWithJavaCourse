@@ -1,9 +1,11 @@
 package Chapter10;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +40,23 @@ public class FramesDragAndDrop {
          */
         WebElement dragMeElem = driver.findElement(By.id("draggable"));
         System.out.println(dragMeElem.isDisplayed());
+        WebElement dropHereElem = driver.findElement(By.id("droppable"));
+        System.out.println(dropHereElem.isDisplayed());
 
-        driver.quit();
+        Actions action = new Actions(driver);
+        /**
+         * Żeby móc wykonywać operacje na elementach dragMeElem i dropHereElem muszę przeskrolować przeglądarkę, aż te elementy
+         * będą w pełni widoczne w oknie - w tzw. viewport (user's visible area of a web page) - inaczej wywala mi exception
+         * MoveTargetOutOfBound. Rozwiązanie z JavaScriptExecutor znalezione w necie.
+         */
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dragMeElem);
+        /**
+         * Jak już wcześniej robiłem - buduję action chain:
+         * moveToElement() - ustawia kursor myszki na środek elementu dragMeElem
+         * dragAndDrop - robi drag and drop z source do target
+         */
+        action.moveToElement(dragMeElem).dragAndDrop(dragMeElem, dropHereElem).build().perform();
+
+        //driver.quit();
     }
 }
