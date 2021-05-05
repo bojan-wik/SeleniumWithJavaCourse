@@ -42,6 +42,7 @@ public class FramesDragAndDrop {
          * na stronie i potem przełączam się na pierwszy element - indeksowanie od zera
          */
         int iframeCount = driver.findElements(By.tagName("iframe")).size();
+        Assert.assertTrue(iframeCount > 0);
         System.out.printf("Number of iframe elements on the page: %d\n", iframeCount);
         driver.switchTo().frame(0);
         /**
