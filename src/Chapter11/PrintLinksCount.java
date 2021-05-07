@@ -1,10 +1,13 @@
 package Chapter11;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class PrintLinksCount {
@@ -20,7 +23,7 @@ public class PrintLinksCount {
         driver.manage().window().maximize();
 
         /**
-         * Print the links count in the entire page.
+         * 1) Print the links count in the entire page.
          *
          * (Robiłem to już wcześniej w FramesDragAndDrop.java, gdzie liczyłem liczbę iframe na stronie)
          */
@@ -28,7 +31,7 @@ public class PrintLinksCount {
         System.out.println(linksCountEntirePage);
 
         /**
-         * Print the links count but only in the footer section.
+         * 2) Print the links count but only in the footer section.
          *
          * Moje pierwotne rozwiązanie - zliczanie po xpath elementów a, które mają konkretnego parenta,
          * hint znaleiony w https://html-agility-pack.net/knowledge-base/44156166/xpath-select-all-children-with-specific-parent-node-by-attribute
@@ -43,10 +46,11 @@ public class PrintLinksCount {
         System.out.println(linksCountFooter);
 
         /**
-         * Print the links count but only in the footer section and only in its 1st column
+         * 3) Print the links count but only in the footer section and only in its 1st column
          *
          * Moje pierwotne rozwiązanie - połączyłem dwa poprzednie rozwiązania: zawężyłem scope wyszukiwania tylko do sekcji footer i dodatkowo
          * napisałem xpath w relacji parent-child
+         * (hint w https://www.tutorialspoint.com/how-to-select-specified-node-within-xpath-node-sets-by-index-with-selenium)
          */
         //int linksCountFooter1stColumn = footerSection.findElements(By.xpath("//td[1]//a")).size();
         /**
@@ -58,6 +62,20 @@ public class PrintLinksCount {
 
         System.out.println(linksCountFooter1stColumn);
 
-        driver.quit();
+        /**
+         * 4) Click on each link in the 1st column and check if the pages are opening
+         *
+         * Moje rozwiązanie - najpierw tworzę listę linków a potem iteruję po tej liście, klikając w każdy link.
+         * Co iterację robię chain action, dzięki czemu jestem w stanie otworzyć każdy link w nowym tabie
+         */
+        Actions action = new Actions(driver);
+
+        List<WebElement> linksListFooter1stColumn = footerSection1stColumn.findElements(By.tagName("a"));
+        for (int i = 1; i < linksListFooter1stColumn.size(); i += 1) {
+            //System.out.println(linksListFooter1stColumn.get(i).getText());
+            action.moveToElement(linksListFooter1stColumn.get(i)).keyDown(Keys.LEFT_CONTROL).click().build().perform();
+        }
+
+        //driver.quit();
     }
 }
