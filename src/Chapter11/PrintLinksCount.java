@@ -7,7 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class PrintLinksCount {
@@ -74,6 +77,35 @@ public class PrintLinksCount {
         for (int i = 1; i < linksListFooter1stColumn.size(); i += 1) {
             //System.out.println(linksListFooter1stColumn.get(i).getText());
             action.moveToElement(linksListFooter1stColumn.get(i)).keyDown(Keys.LEFT_CONTROL).click().build().perform();
+            /**
+             * Rozwiązanie z kursu - zamiast korzystać z klasy Actions, wykorzystana jest metoda sendKeys()
+             */
+            //linksListFooter1stColumn.get(i).sendKeys(Keys.chord(Keys.CONTROL, Keys.ENTER));
+        }
+        /**
+         * Jak już wcześniej robiłem - tworzę kolekcję typu Set do której wrzucam IDki każdej z otwartych okien/tabów, potem tworzę Iteratora, którym będę
+         * iterował po utworzonym Secie za pomocą while-loop. Przechodzę po każdym oknie i printuję jego title. Z racji, że Set jest nieuporządkowanym typem kolekcji,
+         * strony otwierają się w innej kolejności, niż były pierwotnie otwarte.
+         */
+        String parentWindowID = driver.getWindowHandle();
+        Set<String> windowIDs = driver.getWindowHandles();
+        Iterator<String> windowIDsIterator = windowIDs.iterator();
+        while (windowIDsIterator.hasNext()) {
+            String childWindowID = windowIDsIterator.next();
+            /*if (parentWindowID != childWindowID) {
+                driver.switchTo().window(childWindowID);
+                System.out.println(driver.getTitle());
+            }*/
+            /**
+             * Z początku użyłem warunku logicznego not equal w postaci !=, ale nie działał prawidłowo - okazuje się, że warunki == i != działają
+             * na object identity. Czyli, nawet kiedy dwa stringi mają taką samą wartość (jak w tym przypadku na samym początku
+             * parentWindowID == childWindowID) to są i tak dwoma różnymi obiektami. Musiałem użyć !parentWindowID.equals(childWindowID)
+             * hint w: https://stackoverflow.com/questions/8484668/java-does-not-equal-not-working
+             */
+            if (!parentWindowID.equals(childWindowID)) {
+                driver.switchTo().window(childWindowID);
+                System.out.println(driver.getTitle());
+            }
         }
 
         //driver.quit();
