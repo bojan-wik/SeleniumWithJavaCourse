@@ -26,13 +26,28 @@ public class Calendar2 {
         WebElement travelDatePicker = driver.findElement(By.id("travel_date"));
         travelDatePicker.click();
 
-        // May 14
-        int day = 14;
-
-        List<WebElement> availableDays = driver.findElements(By.className("day"));
-        //List<WebElement> availableDays = driver.findElements(By.xpath("//td[@class='day']"));
+        Integer searchedDay = 13;
+        /**
+         * W kursie użyte jest szukanie po classname=day, ale moim zdaniem jest to błędne rozwiązanie, ponieważ wtedy zwraca nam wszystkie dni, nawet te niedostępne (np. przeszłe),
+         * co w niektórych przypadkach generuje błędy.
+         */
+        //List<WebElement> availableDays = driver.findElements(By.className("day"));
+        /**
+         * Napisałem własny xpath z wykorzystaniem OR condition, który zwraca mi dokładnie te dni, które potrzebuję, żeby skrypt działał poprawnie.
+         * Hint w: https://sqa.stackexchange.com/questions/22621/or-conditions-in-xpath
+         */
+        List<WebElement> availableDays = driver.findElements(By.xpath("//td[@class='active day' or @class='day']"));
         for (int i = 0; i < availableDays.size(); i += 1) {
-            System.out.println(availableDays.get(i).getText());
+            WebElement availableDay = availableDays.get(i);
+            if (availableDay.getText().equals(searchedDay.toString())) {
+                System.out.println(availableDay.getText());
+                availableDay.click();
+                /**
+                 * W tym przypadku trzeba zastosować break. Kalendarz na stronie działa w ten sposób, że po kliknięciu w daną datę, kalendarz się zamyka.
+                 * Bez break, pętla idzie dalej, starając się kliknąć w element, który nie jest już obecny w DOM strony, przez to, że kalendarz jest już zamknięty.
+                 */
+                break;
+            }
         }
 
         //driver.quit();
