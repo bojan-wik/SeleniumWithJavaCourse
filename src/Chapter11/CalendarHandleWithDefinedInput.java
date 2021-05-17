@@ -50,7 +50,7 @@ public class CalendarHandleWithDefinedInput {
                 break;
             }
         }
-        
+
         List<WebElement> availableMonths = driver.findElements(By.xpath("//span[@class='month active' or @class='month']"));
         for (int i = 0; i < availableMonths.size(); i += 1) {
             WebElement availableMonth = availableMonths.get(i);
