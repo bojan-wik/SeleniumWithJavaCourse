@@ -31,15 +31,24 @@ public class TableGridHandle {
          * Iteruję po elementach z 3ciej kolumny, wpisuję i < (table1column3.size()) - 2 bo nie chcę ostatnich dwóch elementów z tej kolumny,
          * do ostatnich dwóch elementów muszę się dostać osobno.
          */
+        int table1ResultsCount = 0;
         for (int i = 0; i < (table1column3.size()) - 2; i += 1) {
-            System.out.println(table1column3.get(i).getText());
+            String result = table1column3.get(i).getText();
+            System.out.println(result);
+            table1ResultsCount += Integer.parseInt(result);
         }
+        /**
+         * Wartość z wiersza Extras wyciągam za pomocą xpath, gdzie szukam diva z tekstem 'Extras' i potem przechodzę do jego pierwszego sibilinga
+         */
+        String table1ExtrasValue = driver.findElement(By.xpath("//div[text()='Extras']/following-sibling::div")).getText();
+        System.out.println(table1ExtrasValue);
+        table1ResultsCount += Integer.parseInt(table1ExtrasValue);
+        System.out.println(table1ResultsCount);
 
-        List<WebElement> table1column2 = table1.findElements(By.cssSelector("div[class='cb-col cb-col-100 cb-scrd-itms'] div:nth-child(2)"));
-        for (int i = 11; i < table1column2.size(); i += 1) {
-            System.out.println(table1column2.get(i).getText());
-        }
+        String table1TotalValue = driver.findElement(By.xpath("//div[text()='Total']/following-sibling::div")).getText();
+        System.out.println(table1TotalValue);
 
+        //Assert
 
         //List<WebElement> table1rows = table1.findElements(By.cssSelector("cb-col cb-col-100 cb-scrd-itms"));
 
