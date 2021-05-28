@@ -61,8 +61,8 @@ public class FramesDragAndDrop {
         Actions action = new Actions(driver);
         /**
          * Żeby móc wykonywać operacje na elementach dragMeElem i dropHereElem muszę przeskrolować przeglądarkę, aż te elementy
-         * będą w pełni widoczne w oknie - w tzw. viewport (user's visible area of a web page) - inaczej wywala mi exception
-         * MoveTargetOutOfBound. Rozwiązanie z JavaScriptExecutor znalezione w necie (https://stackoverflow.com/a/20487332)
+         * będą w pełni widoczne w oknie - w tzw. viewport (user's visible area of a web page) - inaczej wywala mi exception MoveTargetOutOfBound.
+         * Rozwiązanie z JavaScriptExecutor znalezione w necie (https://stackoverflow.com/a/20487332)
          */
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dragMeElem);
         /**

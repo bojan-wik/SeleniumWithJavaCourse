@@ -15,7 +15,7 @@ public class AutosuggestiveDropdown3 {
 
         System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\90\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         Actions action = new Actions(driver);
 
         String url = "https://www.makemytrip.com/";
@@ -48,18 +48,24 @@ public class AutosuggestiveDropdown3 {
         WebElement fromCity = driver.findElement(By.id("fromCity"));
         fromCity.click();
         WebElement fromCitySearchbox = driver.findElement(By.xpath("//div[@role='combobox']//input[@type='text']"));
+
         /**
-         * Z użyciem metodfd sendKeys()
+         * Z użyciem metody sendKeys()
          */
-        /*fromCitySearchbox.sendKeys(searchedFromCity);
+        fromCitySearchbox.sendKeys(searchedFromCity);
         fromCitySearchbox.sendKeys(Keys.ARROW_DOWN);
-        fromCitySearchbox.sendKeys(Keys.ENTER);*/
+        fromCitySearchbox.sendKeys(Keys.ENTER);
         /**
          * Z użyciem klasy Actions
          */
-        action.moveToElement(fromCity).click().build().perform();
+        /*action.moveToElement(fromCity).click().build().perform();
         action.moveToElement(fromCitySearchbox).sendKeys(searchedFromCity).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).
-                build().perform();
+                build().perform();*/
+
+        WebElement toCitySearchbox = driver.findElement(By.xpath("//div[@role='combobox']//input[@type='text']"));
+        toCitySearchbox.sendKeys(searchedToCity);
+        toCitySearchbox.sendKeys(Keys.ARROW_DOWN);
+        toCitySearchbox.sendKeys(Keys.ENTER);
 
         //driver.quit();
     }
