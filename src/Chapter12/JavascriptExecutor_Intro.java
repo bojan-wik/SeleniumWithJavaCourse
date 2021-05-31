@@ -24,9 +24,9 @@ public class JavascriptExecutor_Intro {
         driver.manage().window().maximize();
 
         WebElement leavingFromInputField = driver.findElement(By.id("fromPlaceName"));
-        leavingFromInputField.sendKeys("BENG");
+        /*leavingFromInputField.sendKeys("BENG");
         leavingFromInputField.sendKeys(Keys.DOWN);
-        System.out.println(leavingFromInputField.getText());
+        System.out.println(leavingFromInputField.getText());*/
         /**
          * Problem: chcę otrzymać tekst, który w kodzie figuruje jako hidden text. Selenium nie jest w stanie identyfikować hidden elements,
          * przez co metoda getText() nic nie zwraca.
@@ -35,8 +35,11 @@ public class JavascriptExecutor_Intro {
          */
         JavascriptExecutor jsExec = (JavascriptExecutor)driver;
         String jsScript = "return document.getElementById(\"fromPlaceName\").value;";
-        String cityNameReceived = (String) jsExec.executeScript(jsScript);
-        System.out.println(cityNameReceived);
+        /*String cityNameReceived = (String) jsExec.executeScript(jsScript);
+        System.out.println(cityNameReceived);*/
+        /**
+         * Przechodzę do właściwego zadania
+         */
 
         //driver.quit();
     }
