@@ -7,14 +7,14 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Zadanie: Wpisz w wyszukiwarkę słowo "beng" i zweryfikuj, czy w podpowiadanych opcjach pojawia się słowo "airport"
+ * Zadanie: Wpisz w wyszukiwarkę słowo jakąś nazwe miasta i zweryfikuj, czy w podpowiadanych opcjach pojawia się słowo "airport"
  * Tips: Z Javascript executorem miałem już styczność w Chapter12 -> FramesDragAndDrop.java
  */
 public class JavascriptExecutor_Intro {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\90\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\91\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         Actions action = new Actions(driver);
@@ -23,10 +23,13 @@ public class JavascriptExecutor_Intro {
         driver.get(url);
         driver.manage().window().maximize();
 
+        String searchedCity = "kempegowda";
+        String searchedWord = "airport";
         WebElement leavingFromInputField = driver.findElement(By.id("fromPlaceName"));
-        /*leavingFromInputField.sendKeys("BENG");
-        leavingFromInputField.sendKeys(Keys.DOWN);
-        System.out.println(leavingFromInputField.getText());*/
+        leavingFromInputField.sendKeys(searchedCity);
+        leavingFromInputField.sendKeys(Keys.UP);
+        Thread.sleep(1000);
+        System.out.println(leavingFromInputField.getText());
         /**
          * Problem: chcę otrzymać tekst, który w kodzie figuruje jako hidden text. Selenium nie jest w stanie identyfikować hidden elements,
          * przez co metoda getText() nic nie zwraca.
@@ -38,9 +41,20 @@ public class JavascriptExecutor_Intro {
         /*String cityNameReceived = (String) jsExec.executeScript(jsScript);
         System.out.println(cityNameReceived);*/
         /**
-         * Przechodzę do właściwego zadania
+         * Przechodzę do właściwego zadania (moje rozwiązanie). Tworzę while-loop i opieram się na JavascriptExecutor.
+         * Innym rozwiązaniem byłoby stworzenie Webelement listy złożonej z opcji, które wyświetlają się jako proponowane w dropdown i przeiterowanie po tej
+         * liście pętlą for-loop.
          */
+        String cityNameReceived = "";
+        while (!cityNameReceived.equals(searchedCity)) {
+            leavingFromInputField.sendKeys(Keys.DOWN);
+            Thread.sleep(1000);
+            cityNameReceived = (String) jsExec.executeScript(jsScript);
+            if (cityNameReceived.contains(searchedWord.toUpperCase())) {
+                System.out.println(cityNameReceived);
+            }
+        }
 
-        //driver.quit();
+        driver.quit();
     }
 }
