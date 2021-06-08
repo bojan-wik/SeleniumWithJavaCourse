@@ -11,10 +11,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.IOException;
 
 public class DeleteCookiesAndTakeScreenshot {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\91\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -32,11 +33,11 @@ public class DeleteCookiesAndTakeScreenshot {
         File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         System.out.println(screenshotFile.exists());
         /**
-         * Aby zapisać fizyczny plik na lokalnym dysku muszę skorzystać z klasy FileUtils
+         * Aby zapisać fizyczny plik na lokalnym dysku muszę skorzystać z klasy FileUtils. Podaję źródło pliku (obiekt klasy File - screenshotFile)
+         * i jego destynację (adres na dysku lokalnym)
          */
+        FileUtils.copyFile(screenshotFile, new File("C:\\Users\\bojanoww\\Downloads\\screenshot1.png"));
 
-
-
-        //driver.quit();
+        driver.quit();
     }
 }
