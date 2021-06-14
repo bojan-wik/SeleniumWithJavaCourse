@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -14,9 +17,9 @@ import java.util.concurrent.TimeUnit;
 /**
  * Zadanie: wejść na stronkę i w jej foterze sprawdzić, które linki są "zepsute" - prowadzą do niestniejących stron.
  */
-public class AutomateBrokenLinks {
+public class DetectBrokenLinks {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\91\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -60,11 +63,34 @@ public class AutomateBrokenLinks {
          * 2) use Java methods to call the URLs and get their status codes (pewnie coś a la bashowy curl -I)
          * 3) if status code > 400 then URL is not working -> link is broken
          */
-        for (int i = 0; i < footerLinks.size(); i += 1) {
+
+        /**
+         * 2) na przykładzie pojedyńczego linka
+         * Wykorzystuję Java klasę HttpUrlConnection, aby móc wykonywać HTTP requesty na konkretnych URL.
+         * Tworzę String z adresem, potem tworzę obiekt klasy URL, któremu jako paramentr podaję adres w postaci Stringa
+         */
+        String linkURL = "https://rahulshettyacademy.com/brokenlink";
+        URL url = new URL(linkURL);
+        /**
+         * Tworzę obiekt klasy HttpURLConnection, gdzie castuję obiekt klasy URL na HttpURLConnection i otwieram połączenie.
+         * To jest dopiero obiekt połączenia, ale samo połączenie w tym momencie nie jest jeszcze zainicjalizowane
+         */
+        HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+        /**
+         * Jako parametr setRequestMethod() mogę podać jedną z wartości: GET, POST, HEAD, OPTIONS, PUT, DELETE, TRACE.
+         * Ustawiam potrzebny mi parametr, inicjalizuję połączenie i zczytuję response code.
+         */
+        urlConnection.setRequestMethod("HEAD");
+        urlConnection.connect();
+        System.out.println(urlConnection.getResponseCode());
+
+        /*for (int i = 0; i < footerLinks.size(); i += 1) {
             String linkText = footerLinks.get(i).getText();
             String linkURL = footerLinks.get(i).getAttribute("href");
-            System.out.printf("%s %s", linkText, linkURL).println();
-        }
+            //System.out.printf("%s %s", linkText, linkURL).println();
+
+        }*/
+
 
         driver.quit();
     }
