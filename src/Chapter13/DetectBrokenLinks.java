@@ -84,14 +84,6 @@ public class DetectBrokenLinks {
         urlConnection.connect();
         System.out.println(urlConnection.getResponseCode());
 
-        /*for (int i = 0; i < footerLinks.size(); i += 1) {
-            String linkText = footerLinks.get(i).getText();
-            String linkURL = footerLinks.get(i).getAttribute("href");
-            //System.out.printf("%s %s", linkText, linkURL).println();
-
-        }*/
-
-
         driver.quit();
     }
 }
