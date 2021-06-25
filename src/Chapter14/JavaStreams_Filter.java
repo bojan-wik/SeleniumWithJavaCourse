@@ -11,7 +11,7 @@ import java.util.Optional;
  * II. Print all the names which length is greater than 4
  * III. Among the names which length is greater than 4 - print the first result
  */
-public class StreamsIntro {
+public class JavaStreams_Filter {
 
     // Regular way (without using Java Streams)
     @Test
@@ -77,7 +77,7 @@ public class StreamsIntro {
          * b) terminal operation wykonuje się tylko, jeżeli intermediate operation zwróci true,
          *    poza tym - bez terminal operation nie wykona się intermediate operation
          *
-         * To wszystko deklaruję w zmiennej typu long (jeszcze nie wiem dlaczego, ale w int się nie da)
+         * To wszystko deklaruję w zmiennej typu long (dlatego że metoda count() zwraca longa)
          */
         long countNamesStartingWithA = namesList.stream().filter(name -> name.startsWith("A")).count();
         //System.out.println(countNamesStartingWithA);
@@ -93,8 +93,7 @@ public class StreamsIntro {
         // ad III.
         Optional<String> firstNameLongerThan4 = namesList.stream().filter(name -> name.length() > 4).findFirst();
         //System.out.println(firstNameLongerThan4);
-        namesList.stream().filter(name -> name.length() > 4).limit(1).forEach(name -> System.out.println(name));
 
-        // 34:00
+        namesList.stream().filter(name -> name.length() > 4).limit(1).forEach(name -> System.out.println(name));
     }
 }
