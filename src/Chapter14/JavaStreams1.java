@@ -11,7 +11,7 @@ import java.util.Optional;
  * II. Print all the names which length is greater than 4
  * III. Among the names which length is greater than 4 - print the first result
  */
-public class JavaStreams_Filter {
+public class JavaStreams1 {
 
     // Regular way (without using Java Streams)
     @Test

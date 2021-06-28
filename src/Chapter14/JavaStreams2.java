@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * V. Store the results of stream operations in some list
  * VI. Print unique and sorted values from the list
  */
-public class JavaStreams_Map {
+public class JavaStreams2 {
 
     @Test
     public void streamMap() {
