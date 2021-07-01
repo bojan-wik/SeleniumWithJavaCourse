@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * 4) sort on the original list and store the result in new list (ArrayList, sorted)
  * 5) compare both lists (original vs. stored)
  */
-public class WebTableSorting {
+public class a_WebTableSorting {
 
     public static void main(String[] args) {
 
