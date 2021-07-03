@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Quest:
- * Find the given product and print its price
+ * Find the given product and print its price. In this case the given product is on the first page.
  */
 public class b_CustomMethodBuilding {
 
@@ -23,7 +23,7 @@ public class b_CustomMethodBuilding {
         driver.manage().window().maximize();
         driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
 
-        String searchedProduct = "Strawberry";
+        String searchedProduct = "Mango";
 
         List<WebElement> productList = driver.findElements(By.xpath("//tbody/tr/td[1]"));
 
@@ -34,7 +34,7 @@ public class b_CustomMethodBuilding {
          */
         List<String> searchedProductPriceList = productList.stream().filter(productWebelem -> productWebelem.getText().equals(searchedProduct))
                 .map(searchedProductWebelem -> getProductPrice(searchedProductWebelem)).collect(Collectors.toList());
-        System.out.println(searchedProductPriceList);
+        searchedProductPriceList.forEach(price -> System.out.println(price));
 
         driver.quit();
     }
