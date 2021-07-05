@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
  * Quest:
  * write script to validate that whatever is provided into the searchbox is the same what is given in the search result
  */
-public class d_loremipsum {
+public class d_SearchResultVerifying {
 
     public static void main(String[] args) {
 
@@ -27,15 +28,22 @@ public class d_loremipsum {
 
         WebElement searchBox = driver.findElement(By.id("search-field"));
         searchBox.sendKeys(searchedProduct);
-
         List<WebElement> productListAfterSearching = driver.findElements(By.xpath("//tbody/tr/td[1]"));
-        // 5:45
-        List<String> searchedProductInListString = productListAfterSearching.stream().
-                filter(product -> product.getText().contains(searchedProduct))
-                .map(product -> product.getText()).collect(Collectors.toList());
 
-        System.out.println(searchedProductInListString.contains(searchedProduct));
+        /**
+         * Moje rozwiązanie
+         */
+        List<Boolean> filteredList = productListAfterSearching.stream().map(product -> product.getText().contains(searchedProduct)).collect(Collectors.toList());
+        Assert.assertTrue(!(filteredList.contains(false)));
 
-        //driver.quit();
+        /**
+         * Rozwiązanie z kursu
+         */
+        /*List<WebElement> filteredList = productListAfterSearching.stream().filter(product -> product.getText().
+                contains(searchedProduct)).collect(Collectors.toList());
+        //System.out.println(productListAfterSearching.size() == filteredList.size());
+        Assert.assertEquals(productListAfterSearching.size(), filteredList.size());*/
+
+        driver.quit();
     }
 }
