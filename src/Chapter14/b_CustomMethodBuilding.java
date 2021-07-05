@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * Quest:
- * Find the given product and print its price. In this case the given product is on the first page.
+ * Find the given product and print its price. In this case the given product IS on the first page.
  */
 public class b_CustomMethodBuilding {
 
