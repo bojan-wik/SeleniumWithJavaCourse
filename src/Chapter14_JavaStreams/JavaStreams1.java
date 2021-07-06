@@ -1,4 +1,4 @@
-package Chapter14;
+package Chapter14_JavaStreams;
 
 import org.testng.annotations.Test;
 
