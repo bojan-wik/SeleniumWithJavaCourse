@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- Podaję dowolną nazwę dla suit -->
+<suite name="Some Test Suite name">
+    <!-- Podaję dowolną nazwę dla test -->
+    <test verbose="2" preserve-order="true"
+          name="Some Test name">
+        <!-- Definiuję jakie klasy mają być odpalane -->
+        <classes>
+            <!-- Pierwszy sposób: definiuję konkretne test casy, jakie mają być odpalane -->
+            <class name="Chapter18_TestNG.a_HowToRunTests">
+                <methods>
+                    <include name="TestNG_Demo"/>
+                    <include name="SecondTestCase"/>
+                </methods>
+            </class>
+            <!-- Drugi sposób: nie definuję konkretnych test casów, wtedy brane są pod uwagę
+             wszystkie test casy w danej klasie -->
+            <class name="Chapter18_TestNG.b_HowToRunTestsWithXML"/>
+        </classes>
+    </test>
+</suite>

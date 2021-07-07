@@ -22,4 +22,17 @@ public class a_HowToRunTests {
         System.out.println("Hello world");
     }
 
+    /**
+     * Każda funkcja przed którą jest adnotacja '@Test' jest traktowana jako osobny test case.
+     */
+    @Test
+    public void SecondTestCase() {
+        System.out.println("This is a 2nd test case.");
+    }
+
+    /**
+     * Ostatecznie, mogę tworzyć wiele test caseów w jednej tylko klasie.
+     * Istnieje też rozwiązanie, gdzie wszystkie te test casy mogę odpalić za pomocą pliku .xml. Żeby móc generować takie pliki automatycznie
+     * musiałem ściągnąć plugin 'Create TestNG xml', potem klikam prawym na projekt/package/class i wybieram 'Create TestNG XML'
+     */
 }
