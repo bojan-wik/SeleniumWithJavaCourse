@@ -10,7 +10,7 @@
             <!-- Pierwszy sposób: definiuję konkretne test casy, jakie mają być odpalane -->
             <class name="Chapter18_TestNG.a_HowToRunTests">
                 <methods>
-                    <include name="TestNG_Demo"/>
+                    <!-- <include name="TestNG_Demo"/> -->
                     <include name="SecondTestCase"/>
                 </methods>
             </class>

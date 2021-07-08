@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Some Test Suite name">
+    <test verbose="2" preserve-order="true"
+          name="Test 1">
+        <classes>
+            <class name="Chapter18_TestNG.a_HowToRunTests">
+                <methods>
+                    <include name="TestNG_Demo"/>
+                    <include name="SecondTestCase"/>
+                </methods>
+            </class>
+            <class name="Chapter18_TestNG.b_HowToRunTestsWithXML"/>
+        </classes>
+    </test>
+    <test name="Test 2">
+        <classes>
+            <class name="Chapter18_TestNG.c_PrioritizingTestCases"></class>
+        </classes>
+    </test>
+</suite>

@@ -23,7 +23,7 @@ public class b_HowToRunTestsWithXML {
     /**
      * Normalnie, aby wykonać testy zawarte w plikach 'a_HowToRunTests.java' i 'b_HowToRunTestsWithXML.java' musiałbym klikać prawym klikiem
      * na każdym pliku osobno i je odpalać.
-     * Dzięki plikowi 'testng.xml' mogę zdefiniować dokładnie jakie testy chcę mieć odpalone, potem robię prawym klikiem
+     * Dzięki plikowi 'b_testng.xml' mogę zdefiniować dokładnie jakie testy chcę mieć odpalone, potem robię prawym klikiem
      * i odpalam tylko ten jeden plik xml i wszystkie zdefiniowane tam testy są odpalane.
      */
 }
