@@ -22,4 +22,9 @@ public class c_PrioritizingTestCases {
     public void APILogin() {
         System.out.println("Test case: api login");
     }
+
+    /**
+     * Za pomocą pliku xml mogę dowolnie dobierać test casy, grupować je w test suity
+     * i nadawać im kolejność do wykonania -> 'c_testng.xml'
+     */
 }
