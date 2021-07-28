@@ -48,9 +48,11 @@ public class GlobalValuesDrive {
         /**
          * Sam plik data.properties nie jest modyfikowany. Modyfikowane są tylko wartości, które istnieją już w samym obiekcie klasy
          * Properties, a są nimi m.in. skopiowane wartości z pliku data.properties.
-         * Aby móc zapisać zmiany muszę skorzystać z klasy 'FileOutputStream'
+         * Aby móc zapisać zmiany muszę skorzystać z klasy 'FileOutputStream' - tworzę wtedy obiekt pliku,
+         * a potem za pomocą metody store() zapisuję wszystkie wartości przechowywane w obiekcie properties do tego pliku.
          */
         FileOutputStream propertiesFileOutput =
                 new FileOutputStream("C:\\Users\\bojanoww\\IdeaProjects\\SeleniumWithJavaCourse\\src\\Chapter19_GlobalEnvVariables\\data1.properties");
+        properties.store(propertiesFileOutput, "This is some comment.");
     }
 }

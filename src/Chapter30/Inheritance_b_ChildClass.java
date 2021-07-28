@@ -4,11 +4,11 @@ package Chapter30;
  * Tworzę klasę child, która reprezentuje cechy przyszłej generacji aut produkowanej przez firmę 'X'.
  * Podpinam się do klasy parent za pomocą keyworda 'extends'. Dzięki temu klasa child dziedziczy wszystkie cechy aut, które muszą być wspólne dla wszystkich generacji.
  */
-public class Inheritance_ChildClass extends Inheritance_ParentClass {
+public class Inheritance_b_ChildClass extends Inheritance_a_ParentClass {
 
     public static void main(String[] args) {
 
-        Inheritance_ChildClass childClass = new Inheritance_ChildClass();
+        Inheritance_b_ChildClass childClass = new Inheritance_b_ChildClass();
         /**
          * Tworzę obiekt klasy 'Inheritance_ChildClass', która dziedziczy metody klasy 'Inheritance_ParentClass'
          */

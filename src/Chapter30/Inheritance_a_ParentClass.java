@@ -4,7 +4,7 @@ package Chapter30;
  * Tworzę klasę parent, która reprezentuje cechy obecnej generacji aut produkowaną przez firmę 'X'.
  * Cechy te to: color, gear, brakes, audiosystem. Te cechy mają być wspólne dla obecnej i przyszłych generacji aut.
  */
-public class Inheritance_ParentClass {
+public class Inheritance_a_ParentClass {
 
     String color = "red";
 
