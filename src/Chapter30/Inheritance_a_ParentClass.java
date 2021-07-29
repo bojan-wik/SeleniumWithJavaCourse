@@ -17,6 +17,6 @@ public class Inheritance_a_ParentClass {
     }
 
     public void Audiosystem() {
-        System.out.println("Audiosystem code is implemented.");
+        System.out.println("Audiosystem parent-class code is implemented.");
     }
 }
