@@ -11,8 +11,13 @@ public class FunctionOverriding extends Inheritance_a_ParentClass {
     public static void main(String[] args) {
 
         FunctionOverriding functionOverridingDemo = new FunctionOverriding();
+        // metoda, która występuje tylko w child-class
         functionOverridingDemo.Roof();
+        // metoda, która występuje zarówno w parent-class, jak i child-class
+        // metoda z child-class nadpisuje metodę z parent-class
         functionOverridingDemo.Audiosystem();
+        // metoda, która występuje tylko w parent-class
+        functionOverridingDemo.Gear();
 
         /**
          * Jednocześnie możliwe jest stworzenie obiektu parent-clasy, wtedy wywołując tą samą metodę wywołujemy jej implementację
