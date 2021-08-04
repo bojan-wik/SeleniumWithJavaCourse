@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Some Test Suite name">
+<suite name="Login modules testing suite">
     <test verbose="2" preserve-order="true"
           name="Test 1">
         <classes>
-            <class name="Chapter18_TestNG.c_PrioritizingTestCases"></class>
+            <!-- uruchamiane są wszystkie metody/test casy poza excludowanymi -->
+            <class name="Chapter18_TestNG.c_PrioritizingTestCases">
+                <methods>
+                    <exclude name="MobileLogin"/>
+                </methods>    
+            </class>
+            <!-- uruchamiane są wszysktie metody/test casy -->
             <class name="Chapter18_TestNG.a_HowToRunTests"/>
         </classes>
     </test>
     <test name="Test 2">
         <classes>
-            <class name="Chapter18_TestNG.b_HowToRunTestsWithXML"/>
+            <!-- uruchamiane są tylko metody/test casy includowane -->
+            <class name="Chapter18_TestNG.b_HowToRunTestsWithXML">
+                <methods>
+                    <include name="FourthTestCase"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

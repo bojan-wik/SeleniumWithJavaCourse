@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Executing the Test Cases with Regex">
+    <test name="Mobile tests">
+        <classes>
+            <class name="Chapter18_TestNG.d_Regex">
+                <methods>
+                    <!-- uruchamiane są wszystkie metody/test casy, których nazwa zaczyna się od 'Mobile'-->
+                    <include name="Mobile.*"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Logout tests">
+        <classes>
+            <class name="Chapter18_TestNG.d_Regex">
+                <methods>
+                    <!-- uruchamiane są wszystkie metody/test casy, których nazwa kończy się na 'Logout'-->
+                    <include name=".*Logout"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Various tests">
+        <classes>
+            <class name="Chapter18_TestNG.a_HowToRunTests">
+                <methods>
+                    <!-- uruchamiane są wszystkie metody/test casy, które gdziekolwiek w nazwie mają 'NG'-->
+                    <include name=".*NG.*"/>
+                </methods>
+            </class>
+            <class name="Chapter18_TestNG.b_HowToRunTestsWithXML">
+                <methods>
+                    <!-- uruchamiane są wszystkie metody/test casy poza tymi, które gdziekolwiek w nazwie mają 'Third'-->
+                    <exclude name=".*Third.*"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
