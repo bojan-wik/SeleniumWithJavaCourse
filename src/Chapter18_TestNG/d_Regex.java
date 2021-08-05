@@ -3,7 +3,13 @@ package Chapter18_TestNG;
 import org.testng.annotations.Test;
 
 /**
- * Możliwe jest też dobieranie test casów za pomocą Regex -> 'd_testng.xml'
+ * Możliwe jest też dobieranie test casów za pomocą Regex.
+ * Z tego co udało mi się ustalić jest to bardzo uproszczona implementacja Regex.
+ * Możliwe jest wyszukiwanie po słowie:
+ *  a) od którego zaczyna się jakaś fraza,
+ *  b) na który kończy się jakaś fraza
+ *  c) które jest w środku jakiejś frazy
+ *  -> 'd_testng.xml'
  */
 public class d_Regex {
 
