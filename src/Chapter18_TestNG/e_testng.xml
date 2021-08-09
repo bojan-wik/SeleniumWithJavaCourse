@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="test suite">
+    <test name="test folder 1">
+        <classes>
+            <class name="Chapter18_TestNG.e_Annotations1"></class>
+        </classes>
+    </test>
+    <test name="test folder 2">
+        <classes>
+            <class name="Chapter18_TestNG.e_Annotations2"></class>
+        </classes>
+    </test>
+</suite>
