@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  * Jest problem z zaimportowaniem tej klasy - nie importuje automatycznie. Wchodzę ręczenie na https://commons.apache.org/proper/commons-io/
  * pobieram najnowszą, stabilną wersję biblioteki Commons IO i ręcznie dodaję pliki jar do projektu.
  */
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,7 +36,7 @@ public class DeleteCookiesAndTakeScreenshot {
          * Aby zapisać fizyczny plik na lokalnym dysku muszę skorzystać z klasy FileUtils. Podaję źródło pliku (obiekt klasy File - screenshotFile)
          * i jego destynację (adres na dysku lokalnym)
          */
-        FileUtils.copyFile(screenshotFile, new File("C:\\Users\\bojanoww\\Downloads\\screenshot1.png"));
+        //FileUtils.copyFile(screenshotFile, new File("C:\\Users\\bojanoww\\Downloads\\screenshot1.png"));
 
         driver.quit();
     }
