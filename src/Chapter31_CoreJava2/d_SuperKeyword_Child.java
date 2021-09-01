@@ -19,9 +19,14 @@ public class d_SuperKeyword_Child extends d_SuperKeyword_Parent {
      * c) I tak samo jest z wywoływaniem konstruktorów
      */
     public d_SuperKeyword_Child() {
-        //super();
+        super();
+        //super("Wiktor");
         System.out.println("Constructor from child class");
-        //https://www.geeksforgeeks.org/super-keyword/
+        /**
+         * Generalnie w przypadku konstruktorów, nawet jeśli nie użyję keyworda super() to konstruktor z parent klasy jest automatycznie wywoływany,
+         * ale tylko taki, który jest default / no-argument.
+         * Jeżeli w parent klasie mam tylko parameterized constructor to tu już muszę typowo użyć keyworda super() z odpowiednim argumentem
+         */
     }
 
     public void display() {
@@ -45,6 +50,6 @@ public class d_SuperKeyword_Child extends d_SuperKeyword_Parent {
     public static void main(String[] args) {
 
         d_SuperKeyword_Child d_superKeyword_child = new d_SuperKeyword_Child();
-        //d_superKeyword_child.display();
+        d_superKeyword_child.display();
     }
 }
