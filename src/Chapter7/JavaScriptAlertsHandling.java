@@ -17,7 +17,7 @@ public class JavaScriptAlertsHandling {
 
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\92\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\93\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -34,14 +34,24 @@ public class JavaScriptAlertsHandling {
          * Nie wiem, czy z tej metody nie korzystałem już wcześniej do przełączania się pomiędzy tabami/oknami przelądarki.
          */
         String alertText = driver.switchTo().alert().getText();
-        //System.out.println(alertText);
+        System.out.println(alertText);
         Assert.assertTrue(alertText.contains(name));
         driver.switchTo().alert().accept();
         /**
          * Jak pokazuje przykład powyżej - nie jestem w stanie raz przestawić drivera na alerty i potem działać tylko na alertach.
          * Muszę za każdym razem pisać całe driver.switchTo().alert()...
+         *
+         * W kolejnym przykładzie alerta mogę poza kliknięciem OK także kliknąć w Cancel.
+         * Aby to zrobić, muszę skorzystać z metody dismiss()
          */
+        nameInput.sendKeys(name);
+        WebElement confirmButton = driver.findElement(By.id("confirmbtn"));
+        confirmButton.click();
+        alertText = driver.switchTo().alert().getText();
+        System.out.println(alertText);
+        Assert.assertTrue(alertText.contains(name));
+        driver.switchTo().alert().dismiss();
 
-        //driver.quit();
+        driver.quit();
     }
 }
