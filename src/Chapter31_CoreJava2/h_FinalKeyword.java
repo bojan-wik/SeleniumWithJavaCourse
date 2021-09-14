@@ -14,14 +14,21 @@ package Chapter31_CoreJava2;
 
 /**
  * ad c) final class - klasa, z której nie można dziedziczyć.
- * Utworzyłem osobną klasę 'h_FinalKeyword_ChildClass' ...
+ * Utworzyłem osobną klasę 'h_FinalKeyword_ChildClass', która dziedziczy z tej klasy ('h_FinalKeyword').
+ * W momencie kiedy klasa 'h_FinalKeyword' staje się final, nie można z niej nic dziedziczyć i pojawia się error.
  */
 public class h_FinalKeyword {
-
-    String text = "Parent-class variable";
+    /**
+     * ad b) final method - klasa, która nie może być nadpisana.
+     * W child-class stworzyłem metodę o tej samej nazwie. Normalnie zachodzi zjawisko function-overriding, o którym już się wcześniej uczyłem.
+     * W momencie kiedy metoda staje się final, nie można jej nadpisać i pojawia się error.
+     */
+    public void sampleMethod() {
+        System.out.println("Parent-class method");
+    }
+    String sampleVariable = "Parent-class variable";
 
     public static void main(String[] args) {
-
         /**
          * ad a) final variable - zmienna, której nie da się zmodyfikować.
          * Dobrą praktyką jest pisać nazwy zmiennyc typy constant z dużych liter, i ew. oddzielać podkreślnikiem np. 'FINAL_VARIABLE'
