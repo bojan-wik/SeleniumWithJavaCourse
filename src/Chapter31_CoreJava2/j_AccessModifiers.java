@@ -8,8 +8,8 @@ import Chapter30.x_SampleClass;
  *
  * Istnieją 4 typy access modifiers (uszeregowane malejąco wg. zakresu dostępu):
  *      a) public - największy zakres dostępu, byty z tym access modifier są dostępne z każdego poziomu programu/projektu
- *      b) default - kiedy nie ma żadnego access modifiera sprecyzowanego, takie byty są dostępne tylko z poziomu tego samego package
- *      c) protected - dostęp z poziomu tego samego package + z innego package dla child-class
+ *      b) protected - dostęp z poziomu tego samego package + z innego package dla child-class
+ *      c) default - kiedy nie ma żadnego access modifiera sprecyzowanego, takie byty są dostępne tylko z poziomu tego samego package
  *      d) private - najmniejszy zakres dostępu, tylko z poziomu tej samej klasy
  *
  */
@@ -27,7 +27,7 @@ public class j_AccessModifiers {
         System.out.println(sampleClass.sampleVariableAccessPublic);
 
         /**
-         * ad b) default
+         * ad c) default
          * Stworzyłem sobie klasę 'x_SampleClass' która znajduje się w odrębnym package 'Chapter30'. Wewnątrz mam metodę 'sampleMethodAccessDefault()',
          * którą chcę tutaj wywołać. Normalnie (gdyby ta metoda miała access-modifier 'public') byłoby to możliwe poprzez zaimportowanie package,
          * stworzenie obiektu klasy i wywołanie metody.
