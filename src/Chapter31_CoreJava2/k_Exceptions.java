@@ -16,35 +16,59 @@ package Chapter31_CoreJava2;
  */
 public class k_Exceptions {
 
-    int a = 8;
-    int b = 4;
-    int c = 0;
+    public static void main(String[] args) {
 
-    /**
-     * W matematyce nie dzieli się przez zero. Tutaj wykonuję taką operację.
-     * Późniejsze wywołanie metody 'displayDivideByZeroResult()' wywali exception 'ArithmeticException'
-     */
-    /*int divideByZeroResult = a / c;
-    public void displayDivideByZeroResult() {
+        int a = 8;
+        int b = 4;
+        int c = 0;
+
+        /**
+         * W matematyce nie dzieli się przez zero. Tutaj wykonuję taką operację.
+         * Potem chcę wyprintować "Will I be executed?", ale nie będzie to możliwe, ponieważ program wywali się wcześniej
+         * i rzuci ArithmeticException
+         */
+        /*int divideByZeroResult = a / c;
         System.out.println(divideByZeroResult);
-    }*/
+        System.out.println("Will I be executed?");*/
 
-    /**
-     * Jeżeli podejrzewam, że w moim programie mogą być jakieś elementy, które powodują wywalenie jakiegoś exception,
-     * to wtedy takie elementy mogę umieścić w bloku try-catch
-     */
-    try {
-        int divideByZeroResult = a / c;
-        public void displayDivideByZeroResult() {
+        /**
+         * Jeżeli podejrzewam, że w moim programie może być jakaś część kodu, która powoduje pojawienie się jakiegoś exception, to wtedy taki kod mogę umieścić w bloku try.
+         * Wtedy, jeżeli w bloku try faktycznie pojawia się exception, jest on rzucany i łapany w bloku catch.
+         * W bloku catch mogę się dalej zająć wyłapanym exception w pożądany sposób np. printując info o takim zdarzeniu. Jest to tzw. exception handler.
+         * Blok catch powinien występować zawsze bezpośrednio po bloku try.
+         * Exceptiony generowane przez system są automatycznie rzucane. Aby manualnie rzucić exception, trzeba użyć keyworda 'throw'.
+         */
+        /*try {
+            int divideByZeroResult = a / c;
             System.out.println(divideByZeroResult);
         }
-    }
-    catch (Exception exception) {
-        System.out.println("An exception is caught");
-    }
-    
-    public static void main(String[] args) {
-        k_Exceptions classObject = new k_Exceptions();
-        classObject.displayDivideByZeroResult();
+        catch (ArithmeticException exceptionObject) {
+            System.out.println("The exception (ArithmeticException) is caught.");
+        }
+        System.out.println("Will I be executed?");*/
+        /**
+         * W tym przypadku tworzę array na 3 elementy, a potem staram się dostać do 5-tego elementu tej listy, który nie istnieje.
+         * To spowoduje pojawienie się 'ArrayIndexOutOfBoundsException'.
+         */
+        int[] arr = new int[3];
+        try {
+            System.out.println(arr[4]);
+        }
+        /**
+         * Po jednym bloku try może następować wiele bloków catch. Każdy z takich bloków będzie osobnym exception handlerem,
+         * czyli sposobem, w jaki dany exception jest obsługiwany. Tutaj tworzę 3 bloki catch.
+         * Na początku nasłuchuję pod kątem 'ArithmeticException' (on nie pasuje), potem pod kątem 'ArrayIndexOutOfBoundsException' (on pasuje),
+         * a na końcu pod kątem wszystkich typów exception (chyba zawsze warto go dodawać na końcu jako zabezpieczenie)
+         */
+        catch (ArithmeticException exceptionObject) {
+            System.out.println("The exception (ArithmeticException) is caught.");
+        }
+        catch (ArrayIndexOutOfBoundsException exceptionObject) {
+            System.out.println("The exception (ArrayIndexOutOfBoundsException) is caught.");
+        }
+        catch (Exception exceptionObject) {
+            System.out.println("The exception (general) is caught.");
+        }
+        System.out.println("Will I be executed?");
     }
 }
