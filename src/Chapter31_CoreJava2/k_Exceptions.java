@@ -69,6 +69,16 @@ public class k_Exceptions {
         catch (Exception exceptionObject) {
             System.out.println("The exception (general) is caught.");
         }
+        /**
+         *  finally (blok opcjonalny) -  kod w tym bloku jest uruchamiany zawsze, niezależnie od tego, czy jakiś wyjątek został rzucony, czy nie.
+         *  czyli np. jeżeli zakomentuję catch-bloki dla 'ArrayIndexOutOfBoundsException' i 'Exception' to wtedy wyjątek nie zostanie wyłapany i obsłużony,
+         *  to spowoduje wysypanie się skryptu, ale mimo tego kod w finally-bloku zostanie uruchomiony.
+         *  finally-blok może być przydatny do uruchamiania tzw. clean-up kodu, który robiłby porządki po testach np. zamykał przeglądarkę i czyścił cookiesy,
+         *  usuwał założone na potrzeby testów pliki itp.
+         */
+        finally {
+            System.out.println("Code within the 'finally' block");
+        }
         System.out.println("Will I be executed?");
     }
 }
