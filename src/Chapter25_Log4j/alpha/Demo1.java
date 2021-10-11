@@ -2,13 +2,13 @@ package Chapter25_Log4j.alpha;
 
 import org.apache.logging.log4j.*;
 
-public class Demo {
+public class Demo1 {
 
     /**
      * Tworzę obiekt o nazwie 'logger', który jest obiektem klasy Logger. Przypisuję do niej wywołanie metody getLogger(), która jako argument
      * przyjmuje nazwę klasy, w której logger się znajduje ('Demo'). 'Demo.class.getName()' przekazuje całkowitą ścieżkę do klasy.
      */
-    private static final Logger logger = LogManager.getLogger(Demo.class.getName());
+    private static final Logger logger = LogManager.getLogger(Demo1.class.getName());
 
     public static void main(String[] args) {
 
@@ -17,10 +17,10 @@ public class Demo {
          * Defaultowo Logger printuje tylko error message, w tym przypadku error i fatal. Messsage debug i info nie zostaną wyprintowane.
          * Trzeba zmienić konfigurację, żeby one też zostały wyprintowane. Taką konfigurację można ustawić za pomocą pliku .xml
          */
-        logger.debug("I am debugging");
-        logger.info("info message");
-        logger.error("error message");
-        logger.fatal("fatal message");
+        logger.debug("debug message"); // eg. "I have clicked on button"
+        logger.info("info message"); // eg. "Button is displayed"
+        logger.error("error message"); // eg. "Button is NOT displayed"
+        logger.fatal("fatal message"); // eg. "Button is missing"
 
         /**
          * Za pomocą pliku .xml można skonfigurować m.in.
