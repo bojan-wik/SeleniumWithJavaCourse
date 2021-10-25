@@ -1,0 +1,4 @@
+10:27:12.693 [main] ERROR Chapter25_Log4j.alpha.Demo1 - error message
+10:27:12.693 [main] FATAL Chapter25_Log4j.alpha.Demo1 - fatal message
+10:37:14.012 [main] ERROR Chapter25_Log4j.alpha.Demo1 - error message
+10:37:14.012 [main] FATAL Chapter25_Log4j.alpha.Demo1 - fatal message
