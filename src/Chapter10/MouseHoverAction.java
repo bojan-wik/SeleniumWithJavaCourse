@@ -12,7 +12,7 @@ public class MouseHoverAction {
 
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\89\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\95\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 

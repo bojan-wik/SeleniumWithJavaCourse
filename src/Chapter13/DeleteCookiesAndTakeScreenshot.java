@@ -17,7 +17,7 @@ public class DeleteCookiesAndTakeScreenshot {
 
     public static void main(String[] args) throws IOException {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\91\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Tools\\Webdrivers\\Chrome\\95\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         driver.manage().window().maximize();
