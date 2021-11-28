@@ -1,9 +1,13 @@
-package Chapter32;
+package Chapter32_CoreJava3_Collections;
 
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class HashSetExample {
+/**
+ * Przykład użycia Set interface w Chapter10 -> MultipleWindows.java
+ */
+
+public class b_HashSetExample {
 
     public static void main(String[] args) {
 
