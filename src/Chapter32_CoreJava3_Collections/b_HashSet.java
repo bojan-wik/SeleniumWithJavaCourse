@@ -7,7 +7,7 @@ import java.util.Iterator;
  * Przykład użycia Set interface w Chapter10 -> MultipleWindows.java
  */
 
-public class b_HashSetExample {
+public class b_HashSet {
 
     public static void main(String[] args) {
 

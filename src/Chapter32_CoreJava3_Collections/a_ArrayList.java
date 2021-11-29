@@ -3,10 +3,10 @@ package Chapter32_CoreJava3_Collections;
 import java.util.ArrayList;
 
 /**
- * Przykład użycia ArrayList w Chapter8_9 -> AddProductsToCart_ImplicitExplicitWait.java
+ * Przykład użycia List interface w Chapter8_9 -> AddProductsToCart_ImplicitExplicitWait.java
  */
 
-public class a_ArrayListDemo {
+public class a_ArrayList {
 
     public static void main(String[] args) {
 
