@@ -23,7 +23,7 @@ public class c_HashMap {
         /**
          * can not contain duplicate keys - valuesy są nadpisywane
          */
-        hashMap.put(1, "yoł!");
+        hashMap.put(1, "address");
         //System.out.println(hashMap.get(1));
 
         /**
@@ -32,12 +32,31 @@ public class c_HashMap {
         hashMap.remove(3);
         //System.out.println(hashMap.get(3));
 
-        //Set<Map.Entry<Integer, String>> HashMapObjectConvertedToSet = hashMapObject.entrySet();
-        Set HashMapConvertedToSet = hashMap.entrySet();
-        Iterator setIterator = HashMapConvertedToSet.iterator();
+        /**
+         * Mogę za pomocą metody entrySet() przekonwertować HashMap na Set.
+         * Wtedy taki Set będzie zawierał elementy składające się key-values z HashMapy.
+         * Każdy z tych elementów (key-value) to obiekt Map.Entry
+         */
+        Set hashMapConvertedToSet = hashMap.entrySet();
+        //System.out.println("Initial mappings are: " + hashMap);
+        //System.out.println("The set is: " + hashMapConvertedToSet);
 
-        while (setIterator.hasNext()) {
-            Map.Entry mapEntry = (Map.Entry)setIterator.next();
+        /**
+         * Następnie mogę przeiterować po takim przekonwertowanym secie, podobnie jak robiłem to już wcześniej.
+         * Różnica jest taka, że tutaj każdy z elementów setu to kombinacja key-value. Wyprintowanie setIterator.next() da mi takie właśnie kombinacje.
+         */
+        Iterator setIterator1 = hashMapConvertedToSet.iterator();
+        while (setIterator1.hasNext()) {
+            System.out.println(setIterator1.next());
+        }
+
+        /**
+         * Aby dostać się osobno do key i osobno do value muszę najpierw zcastować setIterator.next() do Map.Entry
+         * potem za pomocą dedykowanych metod printować osobno key i osobno value/
+         */
+        Iterator setIterator2 = hashMapConvertedToSet.iterator();
+        while (setIterator2.hasNext()) {
+            Map.Entry mapEntry = (Map.Entry)setIterator2.next();
             System.out.println(mapEntry.getKey());
             System.out.println(mapEntry.getValue());
         }
