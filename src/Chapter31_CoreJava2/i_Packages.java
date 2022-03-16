@@ -1,6 +1,6 @@
 package Chapter31_CoreJava2;
 
-import Chapter30.FunctionOverriding;
+import Chapter30_CoreJava1.FunctionOverriding;
 
 /**
  * Package in Java – to sposób na enkapsulację zestawu klas, interfejsów, subpackages.

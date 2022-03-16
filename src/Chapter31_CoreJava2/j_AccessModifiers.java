@@ -1,6 +1,6 @@
 package Chapter31_CoreJava2;
 
-import Chapter30.x_SampleClass;
+import Chapter30_CoreJava1.x_SampleClass;
 
 /**
  * Access modifiers - służą do zarządzania poziomem dostępu dla poszczególnych bytów (klas, metod, zmiennych, konstruktorów, data members)
